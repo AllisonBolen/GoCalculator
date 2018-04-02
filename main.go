@@ -21,11 +21,13 @@ func main(){
   scan := bufio.NewReader(os.Stdin)
   fmt.Println(reflect.TypeOf(scan))
   fmt.Println("Hello, this is your calculator! Format your requests like: <operator> <num> <num>")
-
+  count := 1
   choice := readIn(scan)
   for choice != "Quit\n" {
     /* case switch statments */
     values := strings.Fields(choice)
+    fmt.Print("Operation Count: ", count)
+    fmt.Print("\n")
     switch operator := values[0]; operator{
     case "+" :
       fmt.Println("Addition Result: ", add(toNum(values[1], values[2])))
@@ -40,6 +42,7 @@ func main(){
     default:
       fmt.Println("HELP MENU: \n \tThis supports the following operators: * ? _ + ^")
     }
+    count = count + 1
     choice = readIn(scan)
   }
 }
